@@ -3,6 +3,10 @@
   --ink:#EFEDE7; --muted:#9B9B93; --gold:#7FD1A5; --moon:#A8C2FF; --paper:#D7E8DD;
 }
 *{box-sizing:border-box}
+html{scrollbar-color:#274037 #08090A;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#08090A}
+::-webkit-scrollbar-thumb{background:#274037;border-radius:6px}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
