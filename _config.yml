@@ -1,0 +1,39 @@
+title: Vita
+description: "Micronutrients, decoded — evidence, not advice."
+url: https://vita.sok.lv
+baseurl: ""
+lang: en
+future: true
+markdown: kramdown
+permalink: pretty
+
+plugins:
+  - jekyll-sitemap
+
+collections:
+  weekly:
+    output: true
+    permalink: /weekly/:name/
+  notes:
+    output: true
+    permalink: /notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "weekly"
+    values:
+      layout: "weekly"
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "note"
+
+google_tag_manager: "G-TJ0Y7GCCC3"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
