@@ -10,12 +10,13 @@ SITE = "https://vita.sok.lv"
 def meta(text):
     out = {}
     for line in text.splitlines():
-        m = re.match(r'^(date|title|description):\s*(.+)$', line)
+        m = re.match(r'^(date|stamp|title|description):\s*(.+)$', line)
         if m:
             out[m.group(1)] = m.group(2).strip().strip('"\'')
     return out
 
 items = []
+d = {}
 for p in sorted((ROOT / "_weekly").glob("*.md")):
     d = meta(p.read_text(encoding="utf-8"))
     if not d.get("date"):
@@ -35,7 +36,8 @@ for date, title, desc, link in items:
     ET.SubElement(it, "title").text = title
     ET.SubElement(it, "link").text = link
     ET.SubElement(it, "guid").text = link
-    ET.SubElement(it, "pubDate").text = date + "T00:00:00Z"
+    stamp = d.get("stamp", "")
+    ET.SubElement(it, "pubDate").text = (stamp.replace(" ", "T") + ":00Z") if stamp else (d["date"] + "T00:00:00Z")
     ET.SubElement(it, "description").text = desc
 
 out = minidom.parseString(ET.tostring(rss, encoding="utf-8")).toprettyxml(indent="  ")
