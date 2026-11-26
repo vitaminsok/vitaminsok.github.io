@@ -1,0 +1,25 @@
+# Vita
+
+Micronutrients, decoded — evidence, not advice. A weekly, source-linked ELI5 note about vitamins and mineral elements. Informational and educational only; no doses from us, no supplement sales.
+
+## Entry points
+- [Today](/): current weekly note
+- [Week 1 — Magnesium](/weekly/2026-11-26-magnesium/): a mineral cofactor, sourced from NIH and EFSA
+- [Week 2 — Vitamin D](/weekly/2026-12-03-vitamin-d/): an organic molecule, sourced from NIH, EFSA and WHO
+- [Method](/methodology/): data sources, categories, compliance, cookies
+- [Archive](/archive/): all weekly notes
+- [RSS](/rss.xml): weekly feed
+- [Sitemap](/sitemap.xml): full URL map
+
+## Micronutrient notes
+- [Vitamin A](/notes/vitamin-a/) · [Vitamin B12](/notes/vitamin-b12/) · [Vitamin C](/notes/vitamin-c/) · [Vitamin D](/notes/vitamin-d/) · [Vitamin E](/notes/vitamin-e/) · [Vitamin K](/notes/vitamin-k/)
+- [Calcium](/notes/calcium/) · [Iron](/notes/iron/) · [Iodine](/notes/iodine/) · [Magnesium](/notes/magnesium/) · [Selenium](/notes/selenium/) · [Zinc](/notes/zinc/)
+
+## Sources
+NIH ODS, EFSA, WHO, Europe PMC, PubMed, Open Food Facts, USDA. Every number is a dated citation, not our advice.
+
+## Cross-project
+- [Sky Chapter](https://skychapter.sok.lv/): the real sky, one chapter a day
+
+## Disclaimer
+Informational and educational only — not medical advice, diagnosis or treatment. No doses, no supplement sales, no partner links.
