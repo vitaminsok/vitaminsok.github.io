@@ -1,14 +1,14 @@
 # Vita
 
-Micronutrients, decoded — evidence, not advice. A weekly, source-linked ELI5 note about vitamins and mineral elements. Informational and educational only; no doses from us, no supplement sales.
+Micronutrients, decoded — evidence, not advice. A daily, source-linked ELI5 note about vitamins and mineral elements. Informational and educational only; no doses from us, no supplement sales.
 
 ## Entry points
-- [Today](/): current weekly note
-- [Week 1 — Magnesium](/weekly/2026-11-26-magnesium/): a mineral cofactor, sourced from NIH and EFSA
-- [Week 2 — Vitamin D](/weekly/2026-12-03-vitamin-d/): an organic molecule, sourced from NIH, EFSA and WHO
+- [Today](/): current daily note
+- [Note 1 — Magnesium](/weekly/2026-11-26-magnesium/): a mineral cofactor, sourced from NIH and EFSA
+- [Note 2 — Vitamin D](/weekly/2026-12-03-vitamin-d/): an organic molecule, sourced from NIH, EFSA and WHO
 - [Method](/methodology/): data sources, categories, compliance, cookies
-- [Archive](/archive/): all weekly notes
-- [RSS](/rss.xml): weekly feed
+- [Archive](/archive/): all daily notes
+- [RSS](/rss.xml): daily feed
 - [Sitemap](/sitemap.xml): full URL map
 
 ## Micronutrient notes
