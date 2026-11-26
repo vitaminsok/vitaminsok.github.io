@@ -19,7 +19,8 @@ Micronutrients, decoded — evidence, not advice. A daily, source-linked ELI5 no
 NIH ODS, EFSA, WHO, Europe PMC, PubMed, Open Food Facts, USDA. Every number is a dated citation, not our advice.
 
 ## Cross-project
-- [Sky Chapter](https://skychapter.sok.lv/): the real sky, one chapter a day
+- [Paper Sky](https://papersky.sok.lv/): paper-only market notes — evidence first, not investment advice.
+- [Sky Chapter](https://skychapter.sok.lv/): the real sky, one chapter a day — reflection, not prediction.
 
 ## Disclaimer
 Informational and educational only — not medical advice, diagnosis or treatment. No doses, no supplement sales, no partner links.
