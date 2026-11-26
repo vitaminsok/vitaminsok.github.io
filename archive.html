@@ -5,7 +5,9 @@ description: All Vita chapters, one micronutrient at a time.
 ---
 <h1>Archive</h1>
 <ul class="archive-list">
-{% for ep in site.weekly | sort: "date" | reverse %}
+{% assign now = site.time | date: "%Y-%m-%d %H:%M" %}
+{% assign eps = site.weekly | where_exp: "ep", "ep.stamp <= now" | sort: "stamp" | reverse %}
+{% for ep in eps %}
   <li><a href="{{ ep.url | relative_url }}">{{ ep.date | date: "%B %-d, %Y" }} — {{ ep.title }}</a></li>
 {% endfor %}
 </ul>
