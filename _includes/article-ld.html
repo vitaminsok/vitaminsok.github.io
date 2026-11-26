@@ -1,0 +1,21 @@
+{% assign ld_date = page.date | date: "%Y-%m-%d" %}
+{% if ld_date == nil or ld_date == empty %}{% assign ld_date = site.time | date: "%Y-%m-%d" %}{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "datePublished": {{ ld_date | jsonify }},
+  "dateModified": {{ ld_date | jsonify }},
+  "author": {"@type": "Organization", "name": "Vita"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Vita",
+    "logo": {"@type": "ImageObject", "url": {{ "/assets/og.png" | absolute_url | jsonify }}}
+  },
+  "mainEntityOfPage": {{ page.url | absolute_url | jsonify }},
+  "image": {{ "/assets/og.png" | absolute_url | jsonify }},
+  "inLanguage": "en"
+}
+</script>
