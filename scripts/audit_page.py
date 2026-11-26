@@ -23,12 +23,13 @@ def fetch(url, tries=3, wait=10):
             import time; time.sleep(wait)
     return 0, last or "no response"
 
-def latest_date():
-    ds = []
+def latest_chapter():
+    rows = []
     for p in (ROOT / "_weekly").glob("*.md"):
-        m = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", p.read_text(encoding="utf-8"), re.M)
-        if m: ds.append(m.group(1))
-    return max(ds) if ds else None
+        m = meta(p.read_text(encoding="utf-8"))
+        rows.append((m.get("stamp") or m.get("date", ""), m.get("date", ""), p))
+    rows.sort()
+    return rows[-1][2] if rows else None
 
 def meta(text):
     out = {}
@@ -47,18 +48,18 @@ def main():
     ap.add_argument("--date", default=None)
     ap.add_argument("--source", action="store_true")
     a = ap.parse_args()
-    date = a.date or latest_date()
-    if not date:
-        raise SystemExit("no chapter found")
-    chapter_path = next(iter(sorted((ROOT / "_weekly").glob(f"{date}*.md"))), None)
+    chapter_path = latest_chapter()
     if chapter_path is None:
-        raise SystemExit(f"no chapter file for {date}")
+        raise SystemExit("no chapter found")
     checks = []
     p = chapter_path
     txt = p.read_text(encoding="utf-8") if p.exists() else ""
     fm = meta(txt)
+    date = a.date or fm.get("date", "")
+    if not date:
+        raise SystemExit("chapter has no date")
     body = txt.split("---", 2)[-1]
-    for k in ("title", "date", "description", "cold_open", "sources_checked"):
+    for k in ("title", "date", "stamp", "description", "cold_open", "sources_checked"):
         rec(checks, f"frontmatter.{k}", bool(fm.get(k)))
     rec(checks, "frontmatter.article", fm.get("article", "").lower() == "true")
     rec(checks, "no raw markdown", "**" not in body and not re.search(r"^#\s", body, re.M))
