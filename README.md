@@ -5,10 +5,10 @@ Address: `https://vita.sok.lv` (DNS + Pages registration by kraser).
 
 ## Publishing path (same as Paper Sky / Sky Chapter)
 1. Gather keyless evidence: NIH ODS, EFSA, WHO, Europe PMC/PubMed, Open Food Facts, USDA.
-2. Write `_weekly/<YYYY-MM-DD>-<slug>.md` with `date`, `title`, `description`, `cold_open`, `sources_checked`, `article: true`.
+2. Write `_weekly/<YYYY-MM-DD>-<slug>.md` with `date`, `stamp` (`YYYY-MM-DD 06:35`), `title`, `description`, `cold_open`, `sources_checked`, `article: true`. One article per day.
 3. `python3 scripts/build_rss.py`
 4. Publish with `~/.hermes/scripts/publish_pages.py` after the repo is added to `github-publish-policy.json`.
-5. `python3 scripts/indexnow.py` — SHA-256 manifest, delta submit only; public key file `indexnow-<key>.txt`.
+5. `python3 scripts/indexnow.py` — SHA-256 manifest, delta submit only; public key file `<key>.txt`, POST includes `keyLocation`.
 6. `python3 scripts/audit_page.py` — source + live checks, writes `data/audit-<date>.json`.
 7. Browser pass: texts, computed styles, screenshot. One review row with `expected`/`review_after`.
 
