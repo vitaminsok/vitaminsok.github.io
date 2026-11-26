@@ -7,14 +7,14 @@ description: "Vita note 1: magnesium as a mineral cofactor, sourced from NIH ODS
 article: true
 sources_checked: 2026-11-26
 ---
-<h2>One micronutrient, one week</h2>
+<h2>One micronutrient, one day</h2>
 <p>Magnesium is a <strong>mineral element</strong>, not a vitamin. We group it with vitamins under “micronutrients”, but we never blur the categories: vitamins are organic molecules; magnesium is an inorganic element.</p>
 
 <h2>What the sources actually say</h2>
 <p>NIH ODS (updated 6 January 2026) describes magnesium as a cofactor in more than 300 enzyme systems that regulate protein synthesis, muscle and nerve function, blood glucose control and blood pressure regulation. The same fact sheet says it contributes to bone structure and is required for energy production and the synthesis of DNA and RNA.</p>
 <p>EFSA's 2015 scientific opinion says Average Requirements and Population Reference Intakes for magnesium cannot be derived for adults, infants or children, and therefore defines Adequate Intakes based on observed intakes in healthy EU populations. That is a source's wording — not our instruction to anyone.</p>
 
-<h2>Fresh research of the week</h2>
+<h2>Fresh research of the day</h2>
 <ul>
   <li>3 Nov 2026 — <a href="https://europepmc.org/article/MED/43030278">Mechanisms of Magnesium Transport Through Cell Membranes</a> (Europe PMC).</li>
   <li>1 Nov 2026 — <a href="https://europepmc.org/article/MED/43016075">Serum Magnesium and Haematoma Expansion in Spontaneous Intracerebral Haemorrhage</a> (Europe PMC).</li>
