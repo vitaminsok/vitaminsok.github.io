@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """IndexNow for Vita: submit only URLs whose source hash changed. Public key only."""
-import argparse, hashlib, json, pathlib, urllib.request
+import argparse, hashlib, json, pathlib, urllib.error, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SITE = "https://vita.sok.lv"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 MANIFEST = ROOT / "indexnow_manifest.json"
-KEY = "vita574350b961c7d455"  # public IndexNow key; key file is served at /indexnow-<key>.txt
+KEY = "vita574350b961c7d455"  # public IndexNow key; key file served at /<key>.txt
 
 def sources():
     m = {"/": ROOT / "index.html",
@@ -34,13 +34,18 @@ def submit(urls, key):
     if not urls:
         print("[indexnow] nothing changed")
         return True
+    urls = [u if u.startswith("http") else SITE + u for u in urls]
     body = json.dumps({"host": "vita.sok.lv", "key": KEY,
                        "keyLocation": f"{SITE}/{KEY}.txt", "urlList": urls}).encode()
     req = urllib.request.Request(ENDPOINT, data=body,
                                  headers={"Content-Type": "application/json; charset=utf-8"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        print("[indexnow]", r.status, "for", len(urls), "URL(s)")
-        return r.status in (200, 202)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            print("[indexnow]", r.status, "for", len(urls), "URL(s)")
+            return r.status in (200, 202)
+    except urllib.error.HTTPError as e:
+        print("[indexnow] FAIL", e.code, e.read().decode(errors="replace")[:200])
+        return False
 
 def main():
     ap = argparse.ArgumentParser()
