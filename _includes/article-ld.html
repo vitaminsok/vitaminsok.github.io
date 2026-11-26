@@ -1,13 +1,15 @@
 {% assign ld_date = page.date | date: "%Y-%m-%d" %}
 {% if ld_date == nil or ld_date == empty %}{% assign ld_date = site.time | date: "%Y-%m-%d" %}{% endif %}
+{% assign ld_stamp = page.stamp | replace: " ", "T" | append: "Z" %}
+{% if ld_stamp == nil or ld_stamp == empty %}{% assign ld_stamp = ld_date | append: "T00:00:00Z" %}{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ page.title | jsonify }},
   "description": {{ page.description | default: site.description | jsonify }},
-  "datePublished": {{ ld_date | jsonify }},
-  "dateModified": {{ ld_date | jsonify }},
+  "datePublished": {{ ld_stamp | jsonify }},
+  "dateModified": {{ ld_stamp | jsonify }},
   "author": {"@type": "Organization", "name": "Vita"},
   "publisher": {
     "@type": "Organization",
