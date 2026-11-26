@@ -64,6 +64,9 @@ def main():
     rec(checks, "frontmatter.article", fm.get("article", "").lower() == "true")
     rec(checks, "no raw markdown", "**" not in body and not re.search(r"^#\s", body, re.M))
     rec(checks, "disclaimer in source", "not medical advice" in body.lower() or "not medical" in body.lower())
+    layout = (ROOT / "_layouts" / "default.html").read_text(encoding="utf-8")
+    rec(checks, "Paper Sky cross-link", "papersky.sok.lv" in layout)
+    rec(checks, "Sky Chapter cross-link", "skychapter.sok.lv" in layout)
     rec(checks, "source links >= 2", len(re.findall(r"https?://", body)) >= 2,
         detail=len(re.findall(r"https?://", body)))
     rec(checks, "sources heading", "Sources" in body)
@@ -89,6 +92,7 @@ def main():
             rec(checks, "OG + twitter:image", "og:site_name" in html and "twitter:image" in html)
             rec(checks, "cookiebar + consent", 'id="cookiebar"' in html and "vita_cookie_consent" in html)
             rec(checks, "live disclaimer", "not medical advice" in html.lower())
+            rec(checks, "live family links", "papersky.sok.lv" in html and "skychapter.sok.lv" in html)
         sm, smap = fetch(DOMAIN + "/sitemap.xml")
         rec(checks, "sitemap contains chapter", sm == 200 and url in smap, detail=sm)
         rr, rss = fetch(DOMAIN + "/rss.xml")
