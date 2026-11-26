@@ -68,6 +68,7 @@ h2{font-family:"Space Grotesk",Inter,sans-serif;font-size:1.25rem;margin:34px 0 
 footer{border-top:1px solid var(--line);padding:28px clamp(16px,4vw,48px) 96px;
   color:var(--muted);font-size:.82rem;max-width:880px;margin:0 auto}
 .disclaimer{color:var(--ink)}
+.family{opacity:.8;margin-top:10px}
 #cookiebar{position:fixed;bottom:18px;left:18px;right:auto;max-width:min(430px,calc(100vw - 36px));
   display:flex;flex-direction:column;gap:10px;padding:12px 14px;background:#15161a;
   border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px #0008;
