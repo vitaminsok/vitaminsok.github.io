@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="chapter">
+  {% include article-ld.html %}
+  <p class="eyebrow">VITA · {{ page.date | date: "%B %-d, %Y" }} · weekly micronutrient note</p>
+  <h1>{{ page.title }}</h1>
+  <p class="cold-open">{{ page.cold_open }}</p>
+  {{ content }}
+  <p class="disclaimer">Informational and educational only — not medical advice, diagnosis or treatment. We quote sources; we never prescribe a dose.</p>
+  <p><a href="{{ '/archive/' | relative_url }}">All chapters →</a></p>
+</article>
