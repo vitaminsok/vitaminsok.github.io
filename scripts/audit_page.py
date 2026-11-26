@@ -5,7 +5,7 @@ import argparse, datetime, json, pathlib, re, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT.parent / "data"
 DOMAIN = "https://vita.sok.lv"
-KEY_FILE = "indexnow-vita574350b961c7d455.txt"
+KEY_FILE = "vita574350b961c7d455.txt"
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36"
 
 def fetch(url, tries=3, wait=10):
