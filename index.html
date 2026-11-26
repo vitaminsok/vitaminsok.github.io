@@ -1,0 +1,28 @@
+---
+layout: default
+title: Today
+---
+{% assign eps = site.weekly | sort: "date" %}
+{% assign ep = eps.last %}
+<section class="board">
+  <p class="eyebrow">VITA · {{ ep.date | date: "%B %-d, %Y" }} · weekly micronutrient note</p>
+  <h1>{{ ep.title }}</h1>
+  <p class="cold-open">{{ ep.cold_open }}</p>
+
+  <div class="ticker" aria-label="Source strip">
+    <span>NIH <b>ODS</b></span>
+    <span>EFSA / WHO</span>
+    <span>Vitamins <b>&amp;</b> minerals</span>
+    <span>Evidence, <b>not advice</b></span>
+  </div>
+
+  <h2>What we do here</h2>
+  <ol class="board-list">
+    <li><strong>One micronutrient a week.</strong> A vitamin or a mineral element — never a “take this” story.</li>
+    <li><strong>Sources attached.</strong> Every number traces to NIH ODS, EFSA, WHO or a dated paper.</li>
+    <li><strong>Vitamins ≠ minerals.</strong> Organic molecules and inorganic elements are different categories; we say which one we mean.</li>
+    <li><strong>No doses from us.</strong> Norms only as citations; no supplement sales, no partner links.</li>
+  </ol>
+
+  <p><a class="cta" href="{{ ep.url | relative_url }}">Read the chapter →</a></p>
+</section>
