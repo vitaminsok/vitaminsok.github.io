@@ -34,7 +34,8 @@ def submit(urls, key):
     if not urls:
         print("[indexnow] nothing changed")
         return True
-    body = json.dumps({"host": "vita.sok.lv", "key": key, "urlList": urls}).encode()
+    body = json.dumps({"host": "vita.sok.lv", "key": KEY,
+                       "keyLocation": f"{SITE}/{KEY}.txt", "urlList": urls}).encode()
     req = urllib.request.Request(ENDPOINT, data=body,
                                  headers={"Content-Type": "application/json; charset=utf-8"})
     with urllib.request.urlopen(req, timeout=30) as r:
