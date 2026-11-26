@@ -2,10 +2,11 @@
 layout: default
 title: Today
 ---
-{% assign eps = site.weekly | sort: "date" %}
+{% assign now = site.time | date: "%Y-%m-%d %H:%M" %}
+{% assign eps = site.weekly | where_exp: "ep", "ep.stamp <= now" | sort: "stamp" %}
 {% assign ep = eps.last %}
 <section class="board">
-  <p class="eyebrow">VITA · {{ ep.date | date: "%B %-d, %Y" }} · weekly micronutrient note</p>
+  <p class="eyebrow">VITA · {{ ep.date | date: "%B %-d, %Y" }} · micronutrient note</p>
   <h1>{{ ep.title }}</h1>
   <p class="cold-open">{{ ep.cold_open }}</p>
 
