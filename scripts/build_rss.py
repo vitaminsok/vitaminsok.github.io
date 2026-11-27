@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate rss.xml from _chapters/*.md frontmatter (keyless, stdlib only)."""
-import pathlib, re
+import datetime, pathlib, re
 from xml.etree import ElementTree as ET
 from xml.dom import minidom
 
@@ -15,14 +15,17 @@ def meta(text):
             out[m.group(1)] = m.group(2).strip().strip('"\'')
     return out
 
+now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M")
 items = []
-d = {}
 for p in sorted((ROOT / "_weekly").glob("*.md")):
     d = meta(p.read_text(encoding="utf-8"))
     if not d.get("date"):
         continue
+    stamp = d.get("stamp") or d["date"]
+    if stamp > now:  # pre-seeded future episode — not published yet
+        continue
     link = f'{SITE}/weekly/{p.stem}/'
-    items.append((d["date"], d.get("title", p.stem), d.get("description", ""), link))
+    items.append((d["date"], d.get("title", p.stem), d.get("description", ""), link, stamp))
 items.sort(reverse=True)
 
 rss = ET.Element("rss", {"version": "2.0"})
@@ -31,13 +34,12 @@ ET.SubElement(ch, "title").text = "Vita"
 ET.SubElement(ch, "link").text = SITE + "/"
 ET.SubElement(ch, "description").text = "Micronutrients, decoded — evidence, not advice."
 ET.SubElement(ch, "language").text = "en"
-for date, title, desc, link in items:
+for date, title, desc, link, stamp in items:
     it = ET.SubElement(ch, "item")
     ET.SubElement(it, "title").text = title
     ET.SubElement(it, "link").text = link
     ET.SubElement(it, "guid").text = link
-    stamp = d.get("stamp", "")
-    ET.SubElement(it, "pubDate").text = (stamp.replace(" ", "T") + ":00Z") if stamp else (d["date"] + "T00:00:00Z")
+    ET.SubElement(it, "pubDate").text = (stamp.replace(" ", "T") + ":00Z") if stamp else (date + "T00:00:00Z")
     ET.SubElement(it, "description").text = desc
 
 out = minidom.parseString(ET.tostring(rss, encoding="utf-8")).toprettyxml(indent="  ")
