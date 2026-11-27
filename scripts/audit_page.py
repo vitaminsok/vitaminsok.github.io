@@ -24,10 +24,15 @@ def fetch(url, tries=3, wait=10):
     return 0, last or "no response"
 
 def latest_chapter():
+    # Pre-seeded future episodes must not be audited as the live chapter.
+    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M")
     rows = []
     for p in (ROOT / "_weekly").glob("*.md"):
         m = meta(p.read_text(encoding="utf-8"))
-        rows.append((m.get("stamp") or m.get("date", ""), m.get("date", ""), p))
+        stamp = m.get("stamp") or m.get("date", "")
+        if stamp and stamp > now:
+            continue
+        rows.append((stamp, m.get("date", ""), p))
     rows.sort()
     return rows[-1][2] if rows else None
 
@@ -36,7 +41,7 @@ def meta(text):
     for line in text.splitlines():
         if line.strip() == "": break
         k, _, v = line.partition(":")
-        out[k.strip()] = v.strip()
+        out[k.strip()] = v.strip().strip('"\'')
     return out
 
 def rec(checks, label, ok, fatal=True, detail=None):
@@ -59,7 +64,7 @@ def main():
     if not date:
         raise SystemExit("chapter has no date")
     body = txt.split("---", 2)[-1]
-    for k in ("title", "date", "stamp", "description", "cold_open", "sources_checked"):
+    for k in ("title", "date", "stamp", "description", "cold_open", "hook", "sources_checked"):
         rec(checks, f"frontmatter.{k}", bool(fm.get(k)))
     rec(checks, "frontmatter.article", fm.get("article", "").lower() == "true")
     rec(checks, "no raw markdown", "**" not in body and not re.search(r"^#\s", body, re.M))
