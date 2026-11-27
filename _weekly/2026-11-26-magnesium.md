@@ -3,6 +3,7 @@ date: 2026-11-26
 stamp: "2026-11-26 09:00"
 title: "Magnesium — the quiet cofactor"
 cold_open: "It is not a vitamin, and that is exactly why it belongs here."
+hook: "The mineral cofactor hiding in over 300 enzyme systems."
 description: "Vita note 1: magnesium as a mineral cofactor, sourced from NIH ODS and EFSA. No dose advice."
 article: true
 sources_checked: 2026-11-26
